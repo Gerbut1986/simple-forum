@@ -11,4 +11,6 @@ How
    
 3. After success authorize you can tested 
 
-4. Each registered user will be able to edit your messages.
+4. Each registered user will be able to edit your messages and makes any post.
+
+5. Also you can register new user, to check if email confirm works. 
