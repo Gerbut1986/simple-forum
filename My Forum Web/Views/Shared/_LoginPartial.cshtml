@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Welcome " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { id = "welcome", title = "Manage" })
+        </li>
+        <li><a id="logout" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+       @* <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+
+<style>
+    #welcome {
+        margin-right:25px;
+        color: darkorange;
+        font-size: larger;
+        font-family: 'Times New Roman';
+        padding: 7px;
+    }
+        #welcome:hover{
+            border-radius:12px;
+            background-color:mistyrose;
+        }
+    #logout {
+        background-color: black;
+        color: red;
+        border-radius: 12px;
+        padding:7px;
+    }
+        #logout:hover {
+            border-radius: 12px;
+            background-color: red;
+            color: black;
+        }
+    #loginLink {
+        color: olive;
+        border: 2px solid gold;
+        border-radius: 22px;
+        padding: 7px;
+        font-family: 'Palatino Linotype';
+    }
+        #loginLink:hover {
+            color: gold;
+            background-color: olive;
+            border: 2px solid olive;
+        }
+</style>

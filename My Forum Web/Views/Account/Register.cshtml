@@ -1,0 +1,101 @@
+﻿@model My_Forum_Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Main css: -->
+    <link href="~/Content/Site.css" rel="stylesheet">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="~/Images/undraw_Graduation_kt.png" id="icon" alt="User Icon" />
+            </div>
+            @if (ViewBag.check == false)
+            {
+            <h5 style="color:red;font-family:'Times New Roman'">@ViewBag.err[0]</h5>
+            }
+            else { }
+            <!-- Login Form -->
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+        <fieldset>
+            @Html.AntiForgeryToken()
+            @Html.TextBoxFor(model => model.First_Name, new { @class = "fadeIn second", @placeholder = "First Name" })
+
+            @Html.TextBoxFor(model => model.Last_Name, new { @class = "fadeIn second", @placeholder = "Last Name" })
+
+            @Html.TextBoxFor(model => model.Email, new { @class = "fadeIn second", @placeholder = "Email" })
+
+            @Html.TextBoxFor(model => model.Login, new { @class = "fadeIn second", @placeholder = "Login" })
+
+            @Html.TextBoxFor(model => model.Password, new { @class = "fadeIn second", @placeholder = "Password" })
+
+            @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "fadeIn second", @placeholder = "Confirm Password" })
+        </fieldset>
+            <input type="submit" class="fadeIn fourth" value="Sign Up">
+        }
+
+            <div id="formFooter">
+                Back to Login form?  @Html.ActionLink("-> Here", "Login", "Account", "", new { @class = "underlineHover" })
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+@*<h2>@ViewBag.Title.</h2>
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
+        </div>
+    }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

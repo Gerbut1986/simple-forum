@@ -1,0 +1,60 @@
+﻿@model IEnumerable<My_Forum_Web.Models.MyUser>
+
+@{
+    ViewBag.Title = "Users_Tbl";
+}
+
+<h1 style="text-align:center;font-family:'Palatino Linotype';position:relative ">All Users Records</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th>
+            Date of Register
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.L_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Register)
+        </td>     
+    </tr>
+}
+
+</table>

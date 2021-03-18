@@ -1,0 +1,53 @@
+﻿@using My_Forum_Web.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Main css: -->
+    <link href="~/Content/Site.css" rel="stylesheet">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="~/Images/undraw_Graduation_kt.png" id="icon" alt="User Icon" />
+            </div>
+            <h4 style="color:red;font-family:'Times New Roman'">@ViewBag.errorMsg</h4>
+            <!-- Login Form -->
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.TextBoxFor(model => model.Email, new { placeholder = "Email address", @class = "fadeIn second" })
+                @Html.TextBoxFor(model => model.Password, new { placeholder = "Password", @class = "fadeIn third" })
+                <input type="submit" class="fadeIn fourth" value="Log In">
+            }
+
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+                Don't have an account?  @Html.ActionLink("Sign Up", "Register", "Account", "", new { @class = "underlineHover" })
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+
