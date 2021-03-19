@@ -4,7 +4,7 @@
 
     public class MyContext : DbContext
     {
-        public MyContext() : base("connection") { }
+        public MyContext() : base("DefaultConnection") { }
 
         public virtual DbSet<MyUser> Users { get; set; }
         public virtual DbSet<ForumMsg> ForumMsgs { get; set; }

@@ -10,6 +10,7 @@
 
     public class HomeController : Controller
     {
+        public static string path { get; set; }
         static MyUser user { get; set; } = null;
         public static MyContext Db { get; set; }
 
@@ -286,6 +287,40 @@
         {
             var l = Db.Users.ToList();
             return View(l);
+        }
+
+        public ActionResult AllUpldsFiles()
+        {
+            bool b = false;
+            List<string> names = new List<string>();
+            path = Server.MapPath("~/UploadsFiles");
+            string[] files_names = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
+            if (files_names == null || files_names.Length == 0)
+            {
+                b = true;
+                if (b) ViewBag.check = b;
+                ViewBag.Empty = "There is no uploaded file here. Please go to the upload area.";
+                return View();
+            }
+            ViewBag.check = b;
+            for (int i = 0; i < files_names.Length; i++)
+                names.Add(Path.GetFileName(files_names[i]));
+
+            return View(names);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteFile(string item)
+        {
+            bool flag = false;
+            if (item != null)
+            {
+                flag = true;
+                string path = Path.Combine(Server.MapPath($"~/UploadsFiles/{item}"));
+                System.IO.File.Delete(path);
+            }
+            if (!flag) return Json("There is nothing to delete...Please upload any file!");
+            else return RedirectToAction("../Home/AllUpldsFiles");
         }
     }
 }
