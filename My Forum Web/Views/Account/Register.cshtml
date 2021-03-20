@@ -30,28 +30,29 @@
             </div>
             @if (ViewBag.check == false)
             {
+                @Html.AntiForgeryToken()
             <h5 style="color:red;font-family:'Times New Roman'">@ViewBag.err[0]</h5>
-            }
-            else { }
+             }
+        else { }
             <!-- Login Form -->
             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-        <fieldset>
-            @Html.AntiForgeryToken()
-            @Html.TextBoxFor(model => model.First_Name, new { @class = "fadeIn second", @placeholder = "First Name" })
+                @Html.AntiForgeryToken()
+                <fieldset>
+                    @Html.TextBoxFor(model => model.First_Name, new { @class = "fadeIn second", @placeholder = "First Name" })
 
-            @Html.TextBoxFor(model => model.Last_Name, new { @class = "fadeIn second", @placeholder = "Last Name" })
+                    @Html.TextBoxFor(model => model.Last_Name, new { @class = "fadeIn second", @placeholder = "Last Name" })
 
-            @Html.TextBoxFor(model => model.Email, new { @class = "fadeIn second", @placeholder = "Email" })
+                    @Html.TextBoxFor(model => model.Email, new { @class = "fadeIn second", @placeholder = "Email" })
 
-            @Html.TextBoxFor(model => model.Login, new { @class = "fadeIn second", @placeholder = "Login" })
+                    @Html.TextBoxFor(model => model.Login, new { @class = "fadeIn second", @placeholder = "Login" })
 
-            @Html.TextBoxFor(model => model.Password, new { @class = "fadeIn second", @placeholder = "Password" })
+                    @Html.TextBoxFor(model => model.Password, new { @class = "fadeIn second", @placeholder = "Password" })
 
-            @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "fadeIn second", @placeholder = "Confirm Password" })
-        </fieldset>
-            <input type="submit" class="fadeIn fourth" value="Sign Up">
-        }
+                    @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "fadeIn second", @placeholder = "Confirm Password" })
+                </fieldset>
+                <input type="submit" class="fadeIn fourth" value="Sign Up">
+            }
 
             <div id="formFooter">
                 Back to Login form?  @Html.ActionLink("-> Here", "Login", "Account", "", new { @class = "underlineHover" })
