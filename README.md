@@ -1,5 +1,5 @@
 # simple-forum
-asp .net mvs
+asp .net mvc
 
 How
 
